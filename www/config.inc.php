@@ -1,5 +1,5 @@
 <?php
-$instances_dir = "/app/ark/configs";
-$shooter_dir = "/app/ark/servers/ARK/ShooterGame";
+$instances_dir = "/www/ark/configs";
+$shooter_dir = "/www/ark/servers/ARK/ShooterGame";
 ?>
 

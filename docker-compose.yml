@@ -1,7 +1,8 @@
-version: '3.5'
+version: "3.5"
 services:
   arkstats:
     build: .
     image: rediculum/arkstats
+    container_name: "ark-stats"
     ports:
       - "8088:80"

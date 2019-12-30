@@ -1,6 +1,7 @@
-FROM alpine:3.4
+FROM alpine:latest
+LABEL Description="ARK Survival statistics webserver"
 
-RUN apk --update add nginx php7-fpm && \
+RUN apk --update add curl nginx php7-fpm && \
     mkdir -p /run/nginx
 
 ADD www /www

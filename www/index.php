@@ -43,49 +43,49 @@ foreach ($inst_files as $inst_file) {
   }
 }
 
-foreach ($instances as $instance) {
-  $config_file = $instances_dir . "/" . $instance;
-
-  foreach (file($config_file) as $line) {
-    #$options[] = preg_grep("/^[a-z]+/", $line);
-    if (preg_match("/^[a-z]+/",$line)) {
-      $str = explode("=",$line);
-      $opts[$str[0]] = strtok($str[1],'"');
+if (count($instances) == 0) {
+  echo "<h4>No instance config files found in $instances_dir</h4>";
+} else {
+  foreach ($instances as $instance) {
+    $config_file = $instances_dir . "/" . $instance;
+  
+    foreach (file($config_file) as $line) {
+      #$options[] = preg_grep("/^[a-z]+/", $line);
+      if (preg_match("/^[a-z]+/",$line)) {
+        $str = explode("=",$line);
+        $opts[$str[0]] = strtok($str[1],'"');
+      }
     }
-  }
-
-  echo "<h4 class=\"align-middle text-center\">$instance</h4>";
-  echo "<table class=\"table table-sm table-striped w-70\" align=center>";
-  echo "<thead><tr>";
-  echo "<th>Option</th>";
-  echo "<th>Value</th>";
-  echo "</tr></thead>";
-  echo "<tbody>";
-
-  foreach ($opts as $k => $v) {
-    if (!preg_match("/password/i",$k)) {
-      echo "<tr><td>$k</td>";
-      echo "<td>$v</td></tr>";
+  
+    echo "<h4 class=\"align-middle text-center\">$instance</h4>";
+    echo "<table class=\"table table-sm table-striped w-70\" align=center>";
+    echo "<thead><tr>";
+    echo "<th>Option</th>";
+    echo "<th>Value</th>";
+    echo "</tr></thead>";
+    echo "<tbody>";
+  
+    foreach ($opts as $k => $v) {
+      if (!preg_match("/password/i",$k)) {
+        echo "<tr><td>$k</td>";
+        echo "<td>$v</td></tr>";
+      }
     }
+  
+    $version = "/app" . $opts[arkserverroot] . "/version.txt";
+    echo "<tr><td>ServerVersion</td>";
+    echo "<td>" . file_get_contents($version) . "</td></tr>";
+  
+    echo "</tbody></table>";
   }
-
-  $version = "/app" . $opts[arkserverroot] . "/version.txt";
-  echo "<tr><td>ServerVersion</td>";
-  echo "<td>" . file_get_contents($version) . "</td></tr>";
-
-  echo "</tbody></table>";
 }
-
-$save_dir = $shooter_dir . "/Saved/SavedArks";
 ?>
-
 </div>
 <div class="col">
 <h2 class="text-center">Survivors</h2>
 <div class="text-center">
-
-
 <?php
+$save_dir = $shooter_dir . "/Saved/SavedArks";
 $save_files = scandir($save_dir,2);
 foreach ($save_files as $save_file) {
   if (preg_match("/\.arkprofile$/",$save_file)) {
@@ -94,8 +94,6 @@ foreach ($save_files as $save_file) {
     echo "<a href=\"https://steamid.io/lookup/" . $survivor . "\" class=\"text-decoration-none\" target=\"_new\">" . $survivor . "</a>";
   }
 }
-
-
 ?>
 </div>
 </div>

@@ -32,7 +32,7 @@ function scanAllDir($dir) {
   return $result;
 }
 
-$instances_dir = "/app/ark/configs";
+include_once "config.inc.php";
 $inst_files = scanAllDir($instances_dir);
 
 foreach ($inst_files as $inst_file) {
@@ -76,7 +76,6 @@ foreach ($instances as $instance) {
   echo "</tbody></table>";
 }
 
-$shooter_dir = "/app/ark/servers/ARK/ShooterGame";
 $save_dir = $shooter_dir . "/Saved/SavedArks";
 ?>
 

@@ -72,7 +72,7 @@ if (count($instances) == 0) {
       }
     }
   
-    $version = "/app" . $opts[arkserverroot] . "/version.txt";
+    $version = $_SERVER['DOCUMENT_ROOT']. "/" . $opts[arkserverroot] . "/version.txt";
     echo "<tr><td>ServerVersion</td>";
     echo "<td>" . file_get_contents($version) . "</td></tr>";
   
@@ -85,7 +85,7 @@ if (count($instances) == 0) {
 <h2 class="text-center">Survivors</h2>
 <div class="text-center">
 <?php
-$save_dir = $shooter_dir . "/Saved/SavedArks";
+$save_dir = $_SERVER['DOCUMENT_ROOT'] . $opts[arkserverroot] . "/ShooterGame/Saved/SavedArks";
 $save_files = scandir($save_dir,2);
 foreach ($save_files as $save_file) {
   if (preg_match("/\.arkprofile$/",$save_file)) {

@@ -44,9 +44,9 @@ services:
     ports:
       - "8888:80"
     volumes:
-      - "ark_theisland_conf:/www/ark/configs/theisland:ro"
-      - "ark_ragnarok_conf:/www/ark/configs/ragnarok:ro"
-      - "ark_servers:/www/ark/servers:ro"
+      - "ark_theisland_conf:/ark/configs/theisland:ro"
+      - "ark_ragnarok_conf:/ark/configs/ragnarok:ro"
+      - "ark_servers:/ark/servers:ro"
     healthcheck:
       test: ["CMD", "curl", "-sLf" , "http://localhost:80"]
 volumes:

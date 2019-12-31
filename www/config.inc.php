@@ -1,4 +1,4 @@
 <?php
-$instances_dir = "/www/ark/configs";
+$instances_dir = "/ark/configs";
 ?>
 

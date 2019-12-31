@@ -72,7 +72,7 @@ if (count($instances) == 0) {
       }
     }
   
-    $version = $_SERVER['DOCUMENT_ROOT']. "/" . $opts[arkserverroot] . "/version.txt";
+    $version = $opts[arkserverroot] . "/version.txt";
     echo "<tr><td>ServerVersion</td>";
     echo "<td>" . file_get_contents($version) . "</td></tr>";
   

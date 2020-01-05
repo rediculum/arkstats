@@ -9,4 +9,5 @@ ADD nginx_arkstats.conf /etc/nginx/conf.d/arkstats.conf
 ADD run.sh /run.sh
 
 EXPOSE 80
+HEALTHCHECK CMD curl -sf http://localhost/health || exit 1
 CMD /run.sh
